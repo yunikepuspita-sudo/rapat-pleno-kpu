@@ -1,0 +1,33 @@
+{
+  "name": "portal-pleno-kpu",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Portal Rapat Pleno KPU - PWA alur kerja rapat pleno end-to-end: persiapan, undangan, presensi QR, voting, notulensi AI, Berita Acara otomatis, tanda tangan digital, dan arsip.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.3.4",
+    "@capacitor/core": "^8.3.4",
+    "@supabase/supabase-js": "^2.106.2",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.3.4",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "pdf-lib": "^1.17.1",
+    "sharp": "^0.34.5",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.6",
+    "vite-plugin-pwa": "^1.3.0"
+  }
+}

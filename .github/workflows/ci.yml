@@ -1,0 +1,45 @@
+name: CI
+
+# Memverifikasi build di setiap Pull Request ke main agar kode rusak
+# tidak bisa di-merge. Wajibkan check ini lewat Branch protection rule.
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # Branch protection mewajibkan dua nama check: "build" dan
+    # "Build & type-check". Job ini menerbitkan check "build".
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check & build
+        run: npm run build
+
+  # Check alias agar nama "Build & type-check" yang juga diwajibkan branch
+  # protection ikut terpenuhi. Hanya lolos bila job "build" di atas sukses,
+  # jadi tidak perlu membangun ulang.
+  build-type-check:
+    name: Build & type-check
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: OK
+        run: echo "Terverifikasi oleh job 'build'."
