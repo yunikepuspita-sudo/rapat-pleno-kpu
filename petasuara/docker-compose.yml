@@ -1,0 +1,31 @@
+# Infrastruktur pengembangan lokal PetaSuara (Arsitektur 3.2 & 7.1)
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: petasuara
+      POSTGRES_PASSWORD: petasuara-dev
+      POSTGRES_DB: petasuara
+    ports: ["5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+
+  # Object storage S3-compatible utk korpus mentah immutable & deliverable
+  minio:
+    image: minio/minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: petasuara
+      MINIO_ROOT_PASSWORD: petasuara-dev
+    ports: ["9000:9000", "9001:9001"]
+    volumes:
+      - miniodata:/data
+
+volumes:
+  pgdata:
+  miniodata:

@@ -1,0 +1,22 @@
+# Kamus normalisasi slang Indonesia umum — aset kumulatif terversi (Arsitektur 3.3).
+# Kamus per wilayah (mis. normalisasi-jabar.yaml) memperluas kamus umum ini.
+versi: "0.1.0"
+peta:
+  gak: tidak
+  ga: tidak
+  nggak: tidak
+  gk: tidak
+  tdk: tidak
+  yg: yang
+  dgn: dengan
+  utk: untuk
+  krn: karena
+  karna: karena
+  udah: sudah
+  udh: sudah
+  blm: belum
+  bgt: banget
+  org: orang
+  pemkot: pemerintah kota
+  pemkab: pemerintah kabupaten
+  pemprov: pemerintah provinsi

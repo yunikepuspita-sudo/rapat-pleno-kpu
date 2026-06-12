@@ -1,0 +1,31 @@
+# Konfigurasi per dapil — "satu pipeline, banyak dapil" (Cetak Biru 5.2).
+# Salin berkas ini per dapil; daftar sumber adalah registri konektor (tabel `sumber`).
+kode: CONTOH-I
+tingkat: PROV          # RI | PROV | KAB-KOTA
+provinsi: Jawa Barat
+kursi: 0
+bpp: null              # diisi dari data publik KPU saat impor
+
+kandidat: []
+#  - nama: "..."
+#    partai: "..."
+#    nomor_urut: 1
+#    status_petahana: false
+#    akun_resmi:        # hanya akun publik resmi figur publik kontestan
+#      instagram: "..."
+#      tiktok: "..."
+
+sumber:
+  berita:
+    # feedparser + trafilatura; hanya portal publik, patuh robots.txt/ToS
+    rss: []
+    #  - url: "https://contoh-portal-lokal.example/rss"
+  medsos: []
+    #  - platform: instagram
+    #    metode: api-resmi      # api-resmi | crawler-patuh-tos
+    #    rate_limit_per_menit: 10
+  av: []
+    #  - platform: youtube
+    #    kanal: []
+
+kamus_normalisasi: kamus/normalisasi-id-umum.yaml
