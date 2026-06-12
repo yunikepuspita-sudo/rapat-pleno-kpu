@@ -1,0 +1,70 @@
+name: Deploy GitHub Pages
+
+# Menerbitkan demo (hasil build Vite) ke GitHub Pages setiap kali ada
+# perubahan di main. Bisa juga dijalankan manual dari tab Actions.
+#
+# CATATAN: GitHub Pages hanya tersedia untuk repositori PUBLIK pada akun
+# gratis. Bila repo masih private, ubah dulu di Settings → General →
+# Danger Zone → Change visibility.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Satu deployment berjalan pada satu waktu; jangan batalkan yang sedang
+# berlangsung agar deployment produksi selalu selesai utuh.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check & build
+        run: npm run build
+        env:
+          # Opsional: isi lewat Settings → Secrets and variables → Actions →
+          # Variables. Bila kosong, aplikasi berjalan dalam mode demo statis.
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          # Aktifkan Pages otomatis (source: GitHub Actions) bila belum aktif.
+          enablement: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
