@@ -2,10 +2,6 @@ name: Deploy GitHub Pages
 
 # Menerbitkan demo (hasil build Vite) ke GitHub Pages setiap kali ada
 # perubahan di main. Bisa juga dijalankan manual dari tab Actions.
-#
-# CATATAN: GitHub Pages hanya tersedia untuk repositori PUBLIK pada akun
-# gratis. Bila repo masih private, ubah dulu di Settings → General →
-# Danger Zone → Change visibility.
 
 on:
   push:
