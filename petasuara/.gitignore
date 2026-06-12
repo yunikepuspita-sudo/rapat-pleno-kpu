@@ -1,3 +1,7 @@
+# Batalkan aturan "*.py" dari .gitignore root rapat-pleno-kpu:
+# di dalam petasuara/ kode Python adalah sumber utama proyek.
+!*.py
+
 .env
 .venv/
 __pycache__/
