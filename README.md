@@ -11,6 +11,8 @@ Terinspirasi arsitektur aplikasi rapat pleno terintegrasi serta proyek open-sour
 
 > Proyek demonstrasi. Seluruh nama komisioner, nomor pleno, dan data bersifat fiktif/edukatif.
 
+**🌐 Demo:** <https://yunikepuspita-sudo.github.io/rapat-pleno-kpu/>
+
 ## ✨ Fitur — 9 tahapan alur pleno
 
 1. **Persiapan Rapat** — jadwalkan rapat: nomor pleno, agenda, jadwal, lokasi, moda (luring/daring/hybrid),
