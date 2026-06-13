@@ -2,6 +2,7 @@
   "name": "portal-pleno-kpu",
   "private": true,
   "version": "1.0.0",
+  "license": "AGPL-3.0-or-later",
   "description": "Portal Rapat Pleno KPU - PWA alur kerja rapat pleno end-to-end: persiapan, undangan, presensi QR, voting, notulensi AI, Berita Acara otomatis, tanda tangan digital, dan arsip.",
   "type": "module",
   "scripts": {
