@@ -1,0 +1,32 @@
+Kategori,Item,Jenis,Biaya Termurah (Rp),Catatan
+A. SEKALI BAYAR,PT Perorangan + NIB,Sekali,3000000,"Syarat akun bisnis payment gateway & jualan ke instansi; CV bisa lebih murah"
+A. SEKALI BAYAR,Domain .id (tahun 1),Sekali,250000,"Tahun berikutnya perpanjang ~Rp 250rb/thn"
+A. SEKALI BAYAR,Dokumen legal (ToS + Kebijakan Privasi UU PDP),Sekali,500000,"Pakai template; drafting penuh bisa Rp 3-10 juta"
+A. SEKALI BAYAR,Branding / logo / landing page,Sekali,0,"Kerjakan sendiri"
+A. SEKALI BAYAR,Setup tools / repo / CI,Sekali,0,"GitHub free + Supabase CLI"
+A. SEKALI BAYAR,Merek dagang / HKI,Sekali,0,"Opsional - tunda dulu (nanti ~Rp 2 juta)"
+A. SEKALI BAYAR,SUBTOTAL SEKALI BAYAR,,3750000,
+,,,,
+B. BULANAN,Supabase Pro,Bulanan,408000,"Baseline: Postgres + Auth + Edge Functions + Storage ($25/bln @ Rp 16.300)"
+B. BULANAN,Claude API (notulensi),Bulanan,45000,"Asumsi 30 pleno/bln x Rp 1.500 (transkrip sedang); variabel"
+B. BULANAN,Domain (amortisasi),Bulanan,21000,"Rp 250rb / 12"
+B. BULANAN,Email transaksional (Resend free),Bulanan,0,"Gratis s/d 3.000 email/bln"
+B. BULANAN,WhatsApp (click-to-chat wa.me),Bulanan,0,"WA Business API ditunda (berbayar)"
+B. BULANAN,Payment gateway (biaya tetap),Bulanan,0,"Midtrans/Xendit: hanya potong per transaksi"
+B. BULANAN,Monitoring (Sentry free),Bulanan,0,"Tier gratis"
+B. BULANAN,SUBTOTAL BULANAN,,474000,
+,,,,
+C. PER-TRANSAKSI (variabel),Token Claude per pleno - transkrip ringkas,Per transaksi,650,"3.000 token input + ~1.000 output"
+C. PER-TRANSAKSI (variabel),Token Claude per pleno - transkrip sedang,Per transaksi,1500,"12.000 token input"
+C. PER-TRANSAKSI (variabel),Token Claude per pleno - transkrip panjang,Per transaksi,3900,"40.000 token input"
+C. PER-TRANSAKSI (variabel),Biaya payment gateway per top-up,Per transaksi,2500,"~Rp 2.500-5.000 atau 0,7-2,9%; tekan dgn prabayar kredit"
+,,,,
+D. MODAL AWAL,Subtotal sekali bayar,,3750000,
+D. MODAL AWAL,Runway operasional 6 bulan (6 x Rp 474.000),,2844000,
+D. MODAL AWAL,TOTAL MODAL AWAL TUNAI,,6594000,"= ~Rp 6,6 juta (kisaran Rp 6-9 juta)"
+,,,,
+E. ASUMSI HARGA JUAL,Harga jual per pleno (Model B managed),Asumsi,20000,"Kisaran wajar Rp 15.000-25.000"
+E. ASUMSI HARGA JUAL,COGS per pleno @100 pleno/bln,Asumsi,5580,"API Rp 1.500 + alokasi Supabase Rp 4.080"
+E. ASUMSI HARGA JUAL,Margin kotor per pleno,Asumsi,14420,"Rp 20.000 - Rp 5.580"
+E. ASUMSI HARGA JUAL,Titik impas operasional (pleno/bln),Asumsi,24,"Rp 474.000 / margin per pleno - tutup biaya bulanan"
+E. ASUMSI HARGA JUAL,Balik modal awal (jumlah pleno terjual),Asumsi,458,"Rp 6.594.000 / Rp 14.420 margin per pleno"
