@@ -27,12 +27,23 @@ import { seedRapat, profilDefault } from './seed'
 const KEY_RAPAT = 'pleno.rapat.v1'
 const KEY_PROFIL = 'pleno.profil.v1'
 const KEY_USER = 'pleno.user.v1'
+const KEY_PERAN_SIPLENO = 'pleno.peranSipleno.v1'
+
+/**
+ * Peran SIPLENO (RBAC dasar 2 level — MVP):
+ *   • provinsi — Pemantau Provinsi: akses baca lintas 27 kabkota (Dashboard Pemantauan).
+ *   • kabkota  — Operator Kabupaten/Kota: mengelola alur pleno wilayahnya.
+ * Pada produksi, peran ini ditetapkan oleh backend (klaim auth), bukan dipilih di klien.
+ */
+export type PeranSipleno = 'provinsi' | 'kabkota'
 
 interface State {
   rapat: Rapat[]
   profil: ProfilLembaga
   /** id peserta yang sedang "login" pada perangkat ini (untuk voting/ttd). */
   userId: string | null
+  /** Peran SIPLENO aktif pada perangkat ini (lihat PeranSipleno). */
+  peranSipleno: PeranSipleno
 }
 
 // ── Persistensi ─────────────────────────────────────────────────────────────
@@ -53,7 +64,9 @@ function load(): State {
     profil = profilDefault()
   }
   const userId = localStorage.getItem(KEY_USER) || null
-  return { rapat, profil, userId }
+  const peranSipleno: PeranSipleno =
+    localStorage.getItem(KEY_PERAN_SIPLENO) === 'kabkota' ? 'kabkota' : 'provinsi'
+  return { rapat, profil, userId, peranSipleno }
 }
 
 let state: State = load()
@@ -65,6 +78,7 @@ function persist() {
     localStorage.setItem(KEY_PROFIL, JSON.stringify(state.profil))
     if (state.userId) localStorage.setItem(KEY_USER, state.userId)
     else localStorage.removeItem(KEY_USER)
+    localStorage.setItem(KEY_PERAN_SIPLENO, state.peranSipleno)
   } catch {
     /* kuota penuh / mode privat — abaikan */
   }
@@ -116,6 +130,9 @@ export const aksi = {
   },
   setUser(userId: string | null) {
     setState({ userId })
+  },
+  setPeranSipleno(peranSipleno: PeranSipleno) {
+    setState({ peranSipleno })
   },
 
   // — Rapat (Persiapan) —

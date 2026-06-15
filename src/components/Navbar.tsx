@@ -16,7 +16,7 @@ function useRoster() {
 }
 
 export default function Navbar() {
-  const { userId } = usePleno()
+  const { userId, peranSipleno } = usePleno()
   const roster = useRoster()
 
   return (
@@ -32,9 +32,21 @@ export default function Navbar() {
 
         <nav className="navbar__links">
           <NavLink to="/" end>🏠 <span>Beranda</span></NavLink>
+          {/* Dashboard Pemantauan hanya untuk peran Pemantau Provinsi (RBAC). */}
+          {peranSipleno === 'provinsi' && (
+            <NavLink to="/pemantauan">🛰️ <span>Pemantauan</span></NavLink>
+          )}
           <NavLink to="/rapat">📋 <span>Rapat</span></NavLink>
           <NavLink to="/arsip">🗄️ <span>Arsip</span></NavLink>
           <NavLink to="/pengaturan">⚙️ <span>Setelan</span></NavLink>
+
+          <label className="userpill" title="Peran SIPLENO (RBAC). Provinsi = pemantau lintas kabkota; Kabkota = operator pleno.">
+            🛡️
+            <select value={peranSipleno} onChange={(e) => aksi.setPeranSipleno(e.target.value as 'provinsi' | 'kabkota')}>
+              <option value="provinsi">Pemantau Provinsi</option>
+              <option value="kabkota">Operator Kabkota</option>
+            </select>
+          </label>
 
           <label className="userpill" title="Identitas Anda di perangkat ini (untuk presensi, voting & tanda tangan)">
             👤

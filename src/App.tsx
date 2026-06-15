@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Dashboard from './pages/Dashboard'
+import DashboardPemantauan from './pages/DashboardPemantauan'
 import RapatList from './pages/RapatList'
 import RapatForm from './pages/RapatForm'
 import RapatDetail from './pages/RapatDetail'
@@ -22,6 +23,7 @@ export default function App() {
             <main className="content">
               <Routes>
                 <Route path="/" element={<Dashboard />} />
+                <Route path="/pemantauan" element={<DashboardPemantauan />} />
                 <Route path="/rapat" element={<RapatList />} />
                 <Route path="/rapat/baru" element={<RapatForm />} />
                 <Route path="/rapat/:id/edit" element={<RapatForm />} />

@@ -108,6 +108,9 @@ input, select, textarea, button { font-family: inherit; }
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand); }
 .field textarea { resize: vertical; min-height: 80px; }
 .field__hint { font-size: 12px; color: var(--muted); }
+/* Kontrol mandiri (di luar .field) — mis. pencarian & pengurutan pemantauan. */
+.input { border: 1.5px solid var(--border); border-radius: 9px; padding: 8px 12px; font-size: 14px; outline: none; background: var(--surface); }
+.input:focus { border-color: var(--brand); }
 .form-grid { display: grid; gap: 0 16px; grid-template-columns: 1fr 1fr; }
 .form-grid .full { grid-column: 1 / -1; }
 
