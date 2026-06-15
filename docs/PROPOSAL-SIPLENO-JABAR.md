@@ -283,6 +283,56 @@ provinsi**) untuk sebagian pekerjaan teknis, tetap tanpa margin komersial.
 
 ---
 
+## Lampiran A — Opsi Anggaran Terbatas Rp 50 Juta (MVP/Pilot)
+
+Bila pagu hanya **± Rp 50 juta** (≈ 6% paket swakelola penuh), target berubah dari "sistem
+produksi 27 kabkota" menjadi **MVP/Pilot percontohan** yang membuktikan nilai inti —
+*backend multi-tenant + Dashboard Pemantauan Provinsi* — dengan memaksimalkan **server eksisting,
+fitur prototipe yang sudah ada, dan layanan gratis pemerintah**.
+
+### A.1 Penyesuaian lingkup
+
+| Komponen | Paket swakelola Rp 880 jt | Penyesuaian di Rp 50 jt |
+|---|---|---|
+| Tim | 5 tenaga ahli + 10 staf | **1 fullstack dev kontrak** + koordinator & 2 staf internal |
+| TTE legal (BSrE) | Diintegrasikan | **Ditunda** — pakai penanda TTE prototipe |
+| WhatsApp Business API | Rp 30 jt | **Ditunda** — pakai *click-to-chat* prototipe (Rp 0) |
+| AI notulensi berbayar | Rp 24 jt | **Generator lokal** prototipe (Rp 0); token AI minimal opsional |
+| Pentest formal | Rp 50 jt | **Ditunda** — hardening checklist internal + koordinasi BSSN |
+| Pelatihan tatap muka 27 kabkota | Rp 120 jt | **Bimtek daring + video panduan** |
+| Cakupan rollout | 27 kabkota penuh | **3–5 kabkota percontohan** dulu |
+
+### A.2 Prioritas (MoSCoW)
+
+- **MUST:** (1) Backend + DB multi-tenant (PostgreSQL self-hosted di server KPU) pengganti
+  `localStorage`; (2) Auth + RBAC dasar 2 level (Pemantau Provinsi & Operator Kabkota);
+  (3) **Dashboard Pemantauan Provinsi** — agregasi status pleno/kuorum/BA/tindak lanjut;
+  (4) Migrasi PWA → API untuk modul inti; (5) Deploy ke server eksisting.
+- **SHOULD:** ekspor laporan provinsi (PDF/Excel), audit log dasar.
+- **WON'T (fase lanjutan):** TTE legal, WA Business API, AI berbayar, pentest formal, SSO,
+  sinkronisasi offline lanjutan, rollout penuh 27 kabkota.
+
+### A.3 RAB Rp 50 juta
+
+| Item | Estimasi |
+|---|---:|
+| Tenaga ahli fullstack (kontrak) — Rp 18 jt × 2 bln | 36.000.000 |
+| Honor tim internal (koordinator + 2 staf, SBM ringkas) | 6.000.000 |
+| Token AI notulensi (opsional, minimal) | 2.000.000 |
+| Domain `.go.id` & SSL (Rp 0 bila pakai subdomain KPU) | 2.000.000 |
+| Operasional, rapat daring, ATK | 2.000.000 |
+| Kontingensi | 2.000.000 |
+| **TOTAL** | **50.000.000** |
+
+### A.4 Ekspektasi & strategi
+
+MVP fungsional dalam **± 2–3 bulan**: sudah dapat memantau kabkota percontohan secara real-time
+untuk demo ke pimpinan. Karena **fondasi multi-tenant sudah terbangun**, *scale-up* ke 27 kabkota
+pada fase berikutnya tinggal konfigurasi + biaya pelatihan/integrasi — **bukan bangun ulang**.
+Pendekatan pilot ini efektif sebagai **bukti nilai untuk mengamankan anggaran lanjutan**.
+
+---
+
 *Dokumen ini adalah draf perencanaan indikatif untuk skema swakelola. Seluruh angka bersifat
 estimasi mengikuti SBM dan kebijakan anggaran KPU, dan tidak mengikat sampai dituangkan dalam
 dokumen kegiatan resmi.*
